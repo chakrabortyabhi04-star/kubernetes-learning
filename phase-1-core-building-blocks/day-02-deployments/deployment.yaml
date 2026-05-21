@@ -13,9 +13,11 @@ spec:
     metadata:
       labels:
         app: nginx-deployment
+        env: dev
+        team: backend
     spec:
       containers:
       - name: nginx-container
         image: nginx
-          ports:
+        ports:
             - containerPort: 80
