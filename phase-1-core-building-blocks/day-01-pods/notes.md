@@ -49,4 +49,4 @@ kubectl delete pod <name>          # delete a Pod
 |---|---|---|
 | InvalidImageName | Image name badly formatted | Fix image name in YAML |
 | ImagePullBackOff | Image not found / wrong tag | Check image name + tag |
-| CrashLoopBackOff | Container keeps cras
+| CrashLoopBackOff | Container keeps crashing
