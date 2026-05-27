@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rolling-demo
+  labels:
+    app: rolling-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rolling-demo
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # Allows up to 1 extra pod (total 4) during update
+      maxUnavailable: 1  # Allows 1 pod to be down during update    
+  template:
+    metadata:
+      labels:
+        app: rolling-demo
+        env: dev
+        team: backend
+    spec:
+      containers:
+      - name: rolling-demo
+        image: nginx:1.26
+        
+        ports:
+            - containerPort: 80
