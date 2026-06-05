@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  type: NodePort
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80          # Port exposed by the service internally
+      targetPort: 80  # Port on the pods where traffic is forwarded
+      nodePort: 30008   # Optional: Specific external port; if omitted, Kubernetes assigns one dynamically   
