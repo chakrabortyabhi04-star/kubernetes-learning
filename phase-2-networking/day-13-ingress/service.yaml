@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  type: ClusterIP  # Default type; accessible only within the cluster
+  selector:
+    app: app
+  ports:
+    - protocol: TCP
+      port: 80       # Port the service listens on within the cluster
+      targetPort: 80 # Port the container listens on   
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service
+spec:
+  type: ClusterIP  # Default type; accessible only within the cluster
+  selector:
+    app: api
+  ports:
+    - protocol: TCP
+      port: 80       # Port the service listens on within the cluster
+      targetPort: 80 # Port the container listens on    
