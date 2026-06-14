@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-network-policy
+  namespace: default
+spec:
+  # Target pods with label app=database
+  podSelector:
+    matchLabels:
+      app: database
+  policyTypes:
+    - Ingress
+    
+  # Ingress: Allow traffic only from pods labeled app=backend on port 80 
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: backend
+      ports:
+        - protocol: TCP
+          port: 80
+  
